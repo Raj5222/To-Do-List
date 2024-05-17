@@ -2,27 +2,38 @@
 import React, { useState } from 'react';
 
 function AddTask({ onAdd }) {
-  const [newTask, setNewTask] = useState('');
+  const [taskName, setTaskName] = useState('');
+  const [description, setDescription] = useState('');
 
-  const handleInputChange = (e) => {
-    setNewTask(e.target.value);
+  const handleTaskNameChange = (e) => {
+    setTaskName(e.target.value);
+  };
+
+  const handleDescriptionChange = (e) => {
+    setDescription(e.target.value);
   };
 
   const handleAddTask = () => {
-    if (newTask.trim() !== '') {
-      onAdd(newTask);
-      setNewTask('');
+    if (taskName.trim() !== '') {
+      onAdd({ taskName, description });
+      setTaskName('');
+      setDescription('');
     }
   };
 
   return (
-    <div>
+    <div><li>
       <input
         type="text"
-        value={newTask}
-        onChange={handleInputChange}
-        placeholder="Enter a new task"
+        value={taskName}
+        onChange={handleTaskNameChange}
+        placeholder="Enter a new task name"
       />
+      <textarea
+        value={description}
+        onChange={handleDescriptionChange}
+        placeholder="Enter task description"
+      ></textarea></li>
       <button onClick={handleAddTask}>Add Task</button>
     </div>
   );

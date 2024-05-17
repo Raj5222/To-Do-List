@@ -28,7 +28,7 @@ function App() {
   };
 
   const handleEditTask = (index, newTask) => {
-    const updatedTasks = tasks.map((task, taskIndex) => 
+    const updatedTasks = tasks.map((task, taskIndex) =>
       taskIndex === index ? newTask : task
     );
     setTasks(updatedTasks);
